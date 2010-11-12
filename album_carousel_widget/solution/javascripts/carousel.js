@@ -1,5 +1,9 @@
 $(document).ready(function () {	
+	carousel_albums();
+});
 
+global_ban_carousel = 1;
+function carousel_albums(){
 	//Configuration Album Gallery
 	itemsToShow 	= 4;
 	speed 			= 500; 
@@ -9,22 +13,29 @@ $(document).ready(function () {
 	carouselList 	= 'ul.carousel-group';
 	
 	
-	totalItems 	= $(carouselDiv + ' ' + carouselList + '> li').length; 
+	totalItems 	= $(carouselDiv + ' ' + carouselList + '> li').length;
 	itemWidth 	= $(carouselDiv + ' ' + carouselList + '> li').outerWidth(true); 
 	itemsHeight = $(carouselDiv + ' ' + carouselList + '> li').outerHeight(true); 		
 	step 		= itemsToShow
 	current 	= 0; 
-				 
+			
 	ulSize		= itemWidth * totalItems;   
 	divSize 	= itemWidth * itemsToShow; 
 			
+	//Init carousel albums
+	$(carouselDiv + ' ' + carouselList + '> li').removeClass();
+	$(carouselDiv + ' ' + carouselList + '> li').addClass("inactive");
+	
 	$(carouselDiv).css("width", divSize+"px").css("height", itemsHeight+"px").css("visibility", "visible").css("overflow", "hidden").css("position", "relative"); 
 	$(carouselDiv + ' ' + carouselList).css("width", ulSize+"px").css("left", -(current * itemWidth)).css("position", "absolute");
-	$(carouselDiv + ' ' + carouselList + '> li').addClass("inactive");
-	$(carouselDiv + ' ' + carouselList + '> li').attr('onclick', 'return show_gallery(this);');
-	$(btnnext).attr('onclick', 'return next();');
-	$(btnprev).attr('onclick', 'return prev();');	
-});
+	
+	if(global_ban_carousel == 1){	
+		$(carouselDiv + ' ' + carouselList + '> li').attr('onclick', 'return show_gallery(this);');
+		$(btnnext).attr('onclick', 'return next();');
+		$(btnprev).attr('onclick', 'return prev();');	
+		global_ban_carousel = 0;
+	}
+}
 
 show_overlay_ban = 1;
 function show_gallery(element){
@@ -55,8 +66,10 @@ function show_gallery(element){
 	carousel_subgroup = $(element).children("ul").html();
 	$('#overlay_content  #carousel-images .carousel-subgroup').html(carousel_subgroup);
 		
+	//ANimation onchange album
 	$('#overlay_content  #carousel-images .carousel-subgroup').css("display", "none");
 	$('#overlay_content  #carousel-images .carousel-subgroup').fadeIn(1000);	
+	
 	//Carousel of images
 	carousel_images();
 			
@@ -79,6 +92,9 @@ function close_overlay(){
 	//Change Main Carousel
 	carouselDiv = '#carousel';
 	$('#overlay_content .carousel_container').remove();	
+	
+	carousel_albums();
+	
 	show_overlay_ban = 1;
 }
 function close_overlay_back(){
