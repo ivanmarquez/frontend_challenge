@@ -1,0 +1,156 @@
+body{
+	background: #2F1409 url(../images/theme/bg.jpg) repeat-x;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #F6E0D7;
+}
+h1{
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/*MAIN CAROUSEL*/
+#main-carousel{
+}
+.carousel_container{
+	position: relative;
+	display: block;	
+	margin: 25px auto;
+	width: 400px;
+}
+.carousel_container .arrow {
+	position:absolute;
+	top:32px;
+	cursor:pointer;
+	width:11px;
+	height:20px;
+	z-index: 100;
+	background:url(../images/theme/carousel_arrows.png) no-repeat  50% 0;
+}
+.carousel_container .arrow.left {
+	background-position:0 0;
+	left:10px;
+}
+.carousel_container .arrow.right {
+	background-position:100% 0;
+	right:10px;
+}
+
+#carousel,
+#carousel_overlay{
+	display: block;
+	margin: 0 auto;
+	background: #40241A;
+}
+#carousel ul.carousel-group li,
+#carousel_overlay ul.carousel-group li{
+	display: inline;
+	float: left;
+	width: 75px;
+	height: 75px;
+	margin: 5px;
+}
+#carousel ul.carousel-group li.inactive img,
+#carousel_overlay ul.carousel-group li.inactive img{
+	cursor: pointer;
+	-moz-opacity: 0.3;
+	opacity:.30;
+	filter: alpha(opacity=30);
+}
+#carousel ul.carousel-group li.inactive img:hover,
+#carousel_overlay ul.carousel-group li.inactive img:hover,
+#carousel ul.carousel-group li.active img,
+#carousel_overlay ul.carousel-group li.active img{
+	-moz-opacity: 1;
+	opacity:1;
+	filter: alpha(opacity=100);
+}
+
+/*IMAGE CAROUSEL*/
+#main_carousel_subcontainer{
+	position: relative;
+	display: block;
+	margin: 25px auto 0 auto;
+	width: 415px;
+}
+#counter-images{
+	text-align: right;
+}
+.carousel_subcontainer{	
+	padding: 5px;
+	border: 1px solid #4C281A;
+	background: #341A14;
+}
+.carousel_subcontainer .arrow {
+	position:absolute;
+	top:0;
+	cursor:pointer;
+	width:11px;
+	height:400px;
+	z-index: 100;
+	background:url(../images/theme/carousel_arrows.png) no-repeat  50% 50%;
+}
+
+.carousel_subcontainer .arrow.left {
+	background-position:0 50%;
+	left:10px;
+}
+.carousel_subcontainer .arrow.right {
+	background-position:100% 50%;
+	right:10px;
+}
+#carousel-images{
+	display: block;
+	margin: 0 auto;
+}
+#carousel-images ul.carousel-subgroup li{
+	display: inline;
+	float: left;
+	width: 400px;
+	height: 400px;
+}
+
+/*OVERLAY DIV*/
+a.close_overlay{
+	float:right;
+	width:13px;
+	height:14px;
+	text-indent:-9999px;
+	background:  url(../images/theme/delete_x.jpg) no-repeat;
+}
+a.close_overlay:hover{
+	background-position: 0 -14px;
+}
+.overlay{
+	display: none;
+	position:fixed;
+	_position:absolute;
+	left: 0px;
+	top: 0px;
+	_top:expression(eval(document.body.scrollTop));
+	margin:0;
+  	padding:0;
+	width:100%;
+	height:100%;
+	background-color: #000000;
+	z-index:1001;
+	-moz-opacity: 0.7;
+	opacity:.70;
+	filter: alpha(opacity=70);
+}
+.overlay_content {
+	display: none;
+	width: 500px;
+	height: 600px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -300px 0 0 -250px;
+
+	padding: 5px;
+	border: 1px solid #4C281A;
+	background: #2F1409;
+	z-index:1002;
+	overflow: auto;
+}
