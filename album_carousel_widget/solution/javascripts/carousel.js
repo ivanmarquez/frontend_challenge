@@ -30,9 +30,20 @@ function carousel_albums(){
 	$(carouselDiv + ' ' + carouselList).css("width", ulSize+"px").css("left", -(current * itemWidth)).css("position", "absolute");
 	
 	if(global_ban_carousel == 1){	
-		$(carouselDiv + ' ' + carouselList + '> li').attr('onclick', 'return show_gallery(this);');
-		$(btnnext).attr('onclick', 'return next();');
-		$(btnprev).attr('onclick', 'return prev();');	
+		//EVENT ONCLICK FOR LI ALBUMS
+		$(carouselDiv + ' ' + carouselList + '> li').click(function() {
+            return show_gallery(this);
+            return false;
+        })
+		
+		//NEXT PREV BTNS
+		$(btnnext).click(function() {
+            return next();
+        })
+		$(btnprev).click(function() {
+            return prev();
+        })
+		
 		global_ban_carousel = 0;
 	}
 }
@@ -57,6 +68,22 @@ function show_gallery(element){
 		$('#overlay_content .carousel_container #carousel').attr('id', 'carousel_overlay');		
 		
 		$('#overlay_content .carousel_container').add('h1');
+		
+		//EVENT ONCLICK FOR LI ALBUMS
+		$(carouselDiv + ' ' + carouselList + '> li').click(function() {
+            return show_gallery(this);
+            return false;
+        })
+		
+		//NEXT PREV BTNS
+		$(btnnext).click(function() {
+            return next();
+        })
+		$(btnprev).click(function() {
+            return prev();
+        })
+		
+		global_ban_carousel_images = 1;
 		
 		//Show Overlay
 		show_overlay();
@@ -151,8 +178,14 @@ function carousel_images(){
 	}
 	
 	if(global_ban_carousel_images ==1){
-		$(btnnextI).attr('onclick', 'return nextI();');
-		$(btnprevI).attr('onclick', 'return prevI();');
+		//NEXT PREV BTNS
+		$(btnnextI).click(function() {
+            return nextI();
+        })
+		$(btnprevI).click(function() {
+            return prevI();
+        })
+		
 		global_ban_carousel_images = 0;
 	}
 }
